@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows:
       - Run something that always passes
+      - Run something that always passes 2
     types:
       - completed
 
