@@ -2,7 +2,7 @@ module.exports = async ({github, context, core}) => {
     const owner = context.repo.owner;
     const repo = context.repo.repo;
     const sha = "${{ github.event.workflow_run.head_commit.id }}";
-    const workflow_ids = ["First Workflow Name", "Second Workflow Name"]; // Use actual workflow file names or IDs
+    const workflow_ids = ["example.yml", "example2.yml"];
     let allSucceeded = true;
 
     for (const workflow_id of workflow_ids) {
