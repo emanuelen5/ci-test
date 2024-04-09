@@ -12,6 +12,7 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    steps:
     - name: Save PR number
       env:
         PR_NUMBER: ${{ github.event.number }}
