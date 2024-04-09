@@ -1,0 +1,30 @@
+name: Comment on PR success
+
+on:
+  check_suite:
+
+jobs:
+  comment-on-pr:
+    runs-on: ubuntu-latest
+    if: github.event.check_suite.conclusion == 'success'
+    steps:
+      - name: Print the event
+        run: |
+          echo ${{ toJson(github.event.check_suite) }}
+      - name: Comment on all related PRs
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prs = github.event.check_suite.pull_requests;
+            const sha = github.event.check_suite.head_sha;
+            const message = `### All checks passed!\nCommit ID: ${sha}`;
+            for (const pr of prs) {
+              console.log(`Notifying in PR #${pr}`);
+              await github.rest.issues.createComment({
+                issue_number: pr.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: message
+              });
+            }
+
