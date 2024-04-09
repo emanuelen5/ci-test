@@ -2,6 +2,8 @@ name: Use the data
 
 on:
   workflow_run:
+    workflows:
+      - Run something that always passes
     types:
       - completed
 
