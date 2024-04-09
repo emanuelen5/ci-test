@@ -1,4 +1,4 @@
-name: Run something that always passes
+name: Run something that always passes 2
 
 on:
   push:
