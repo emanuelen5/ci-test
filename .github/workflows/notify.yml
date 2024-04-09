@@ -1,6 +1,7 @@
 name: Comment on PR success
 
 on:
+  status:
   check_run:
   check_suite:
 
@@ -10,6 +11,7 @@ jobs:
     steps:
       - name: Print the event
         run: |
+          echo "Status: ${{ toJson(github.event.status) }}"
           echo "Check run: ${{ toJson(github.event.check_run) }}"
           echo "Check suite: ${{ toJson(github.event.check_suite) }}"
       - name: Comment on all related PRs
