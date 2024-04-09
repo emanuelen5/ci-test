@@ -8,6 +8,12 @@ on:
     types: [completed]
 
 jobs:
+  print: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print env
+        run:
+          env
   comment-on-pr:
     runs-on: ubuntu-latest
     steps:
