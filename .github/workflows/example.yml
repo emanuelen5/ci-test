@@ -15,5 +15,5 @@ jobs:
 
     steps:
     - name: Pass the test
-      runs: echo done
+      run: echo done
 
