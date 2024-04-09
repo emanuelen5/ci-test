@@ -18,7 +18,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const script = require('./path/to/script.js');
+            const script = require('./.github/scripts/workflow-run.js');
             return await script({github, context, core});
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
