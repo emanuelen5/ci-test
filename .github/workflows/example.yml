@@ -1,0 +1,19 @@
+name: Run something that always passes
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Pass the test
+      run: echo done
+
