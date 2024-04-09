@@ -1,0 +1,19 @@
+name: Notify by polling
+
+on:
+  workflow_run:
+    workflows:
+      - Run something that always passes
+      - Run something that always passes 2
+    types:
+      - completed
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wechuli/allcheckspassed@v1
+        with:
+          delay: '0'
+          retries: '3'
+          polling_interval: '3'
