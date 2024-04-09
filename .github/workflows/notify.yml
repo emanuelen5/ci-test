@@ -1,16 +1,17 @@
 name: Comment on PR success
 
 on:
+  check_run:
   check_suite:
 
 jobs:
   comment-on-pr:
     runs-on: ubuntu-latest
-    if: github.event.check_suite.conclusion == 'success'
     steps:
       - name: Print the event
         run: |
-          echo ${{ toJson(github.event.check_suite) }}
+          echo "Check run: ${{ toJson(github.event.check_run) }}"
+          echo "Check suite: ${{ toJson(github.event.check_suite) }}"
       - name: Comment on all related PRs
         uses: actions/github-script@v6
         with:
