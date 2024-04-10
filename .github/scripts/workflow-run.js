@@ -6,17 +6,18 @@ module.exports = async ({github, context, core}) => {
     let allSucceeded = true;
 
     for (const workflow_id of workflow_ids) {
-    const runs = await github.rest.actions.listWorkflowRuns({
-        owner,
-        repo,
-        workflow_id,
-        branch: "main", // Adjust this as necessary
-    });
-    const recentRun = runs.data.workflow_runs.find(run => run.head_sha === sha);
-    if (!recentRun || recentRun.conclusion !== 'success') {
-        allSucceeded = false;
-        break;
-    }
+        const runs = await github.rest.actions.listWorkflowRuns({
+            owner,
+            repo,
+            workflow_id,
+            branch: "main", // Adjust this as necessary
+        });
+        const recentRun = runs.data.workflow_runs.find(run => run.head_sha === sha);
+        console.log(recentRun);
+        if (!recentRun || recentRun.conclusion !== 'success') {
+            allSucceeded = false;
+            break;
+        }
     }
 
     return allSucceeded;
