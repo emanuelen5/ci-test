@@ -12,6 +12,7 @@ module.exports = async ({github, context, core}) => {
             workflow_id,
             branch: "main", // Adjust this as necessary
         });
+        console.log(runs);
         const recentRun = runs.data.workflow_runs.find(run => run.head_sha === sha);
         console.log(recentRun);
         if (!recentRun || recentRun.conclusion !== 'success') {
